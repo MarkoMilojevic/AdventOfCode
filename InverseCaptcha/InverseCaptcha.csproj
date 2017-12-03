@@ -42,9 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Filters\HalfwayAroundCaptchaFilter.cs" />
-    <Compile Include="Filters\AdjacentCaptchaFilter.cs" />
-    <Compile Include="Filters\ICaptchaFilter.cs" />
+    <Compile Include="Solvers\HalfwayAroundInverseCaptchaSolver.cs" />
+    <Compile Include="Solvers\AdjacentInverseCaptchaSolver.cs" />
+    <Compile Include="Solvers\InverseCaptchaSolver.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="InverseCaptcha.cs" />
     <Compile Include="Program.cs" />

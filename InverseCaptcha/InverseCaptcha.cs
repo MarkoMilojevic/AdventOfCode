@@ -1,24 +1,23 @@
-﻿using InverseCaptcha.Filters;
+﻿using InverseCaptcha.Solvers;
 using System;
-using System.Linq;
 
 namespace InverseCaptcha
 {
     public class InverseCaptcha
     {
-        private readonly ICaptchaFilter _filter;
+        private readonly InverseCaptchaSolver _solver;
 
         public string Input { get; }
 
-        public InverseCaptcha(string input, ICaptchaFilter filter)
+        public InverseCaptcha(string input, InverseCaptchaSolver solver)
         {
             Input = input ?? throw new ArgumentNullException(nameof(input));
-            _filter = filter ?? throw new ArgumentNullException(nameof(_filter));
+            _solver = solver ?? throw new ArgumentNullException(nameof(_solver));
         }
 
         public int Solve()
         {
-            return _filter.Filter(Input.GetDigits()).Sum();
+            return _solver.Solve(Input);
         }
     }
 }

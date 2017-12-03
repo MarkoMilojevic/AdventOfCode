@@ -1,4 +1,4 @@
-﻿using InverseCaptcha.Filters;
+﻿using InverseCaptcha.Solvers;
 using Xunit;
 
 namespace InverseCaptcha.UnitTests
@@ -12,7 +12,7 @@ namespace InverseCaptcha.UnitTests
         [InlineData(91212129, 9)]
         public void Solve(int input, int expected)
         {
-            var captcha = new InverseCaptcha(input.ToString(), new AdjacentCaptchaFilter());
+            InverseCaptcha captcha = new InverseCaptcha(input.ToString(), new AdjacentInverseCaptchaSolver());
 
             Assert.Equal(expected, captcha.Solve());
         }
@@ -25,7 +25,7 @@ namespace InverseCaptcha.UnitTests
         [InlineData(12131415, 4)]
         public void SolveHalfwayAround(int input, int expected)
         {
-            var captcha = new InverseCaptcha(input.ToString(), new HalfwayAroundCaptchaFilter());
+            InverseCaptcha captcha = new InverseCaptcha(input.ToString(), new HalfwayAroundInverseCaptchaSolver());
 
             Assert.Equal(expected, captcha.Solve());
         }
