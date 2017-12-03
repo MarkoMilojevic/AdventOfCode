@@ -36,7 +36,7 @@ namespace InverseCaptcha
             return sequence.RemoveItemsNotMatchingNextItemWithStep(sequence.Count / 2);
         }
 
-        public static List<T> RemoveItemsNotMatchingNextItemWithStep<T>(this List<T> sequence, int step)
+        private static List<T> RemoveItemsNotMatchingNextItemWithStep<T>(this List<T> sequence, int step)
         {
             List<T> itemsMatchingNextItem = new List<T>();
 
