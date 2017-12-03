@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace InverseCaptcha
@@ -22,12 +21,10 @@ namespace InverseCaptcha
 
         public int Solve()
         {
-            return Filter(Input.GetDigits(), Step).Sum();
-        }
-
-        private List<int> Filter(List<int> digits, int step)
-        {
-            return digits.RemoveItemsNotMatchingItemWithinStep(step);
+            return Input
+                    .GetDigits()
+                    .RemoveItemsNotMatchingItemWithinStep(Step)
+                    .Sum();
         }
     }
 }
