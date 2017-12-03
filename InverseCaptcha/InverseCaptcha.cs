@@ -9,7 +9,7 @@ namespace InverseCaptcha
         private readonly Func<List<int>, List<int>> _filter;
 
         public string Input { get; }
-        
+
         public InverseCaptcha(string input, Func<List<int>, List<int>> filter)
         {
             Input = input ?? throw new ArgumentNullException(nameof(input));
