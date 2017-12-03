@@ -16,6 +16,7 @@ namespace InverseCaptcha.UnitTests
 
         public static IEnumerable<object> GetDigitsFromStringParams()
         {
+            yield return new object[] { "", new List<int> { } };
             yield return new object[] { "1", new List<int> { 1 } };
             yield return new object[] { "12", new List<int> { 1, 2 } };
             yield return new object[] { "123", new List<int> { 1, 2, 3 } };
