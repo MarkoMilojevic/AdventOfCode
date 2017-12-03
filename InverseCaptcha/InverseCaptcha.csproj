@@ -42,11 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Solvers\HalfwayAroundInverseCaptchaSolver.cs" />
-    <Compile Include="Solvers\AdjacentInverseCaptchaSolver.cs" />
-    <Compile Include="Solvers\InverseCaptchaSolver.cs" />
+    <Compile Include="InverseCaptchaSolver.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="InverseCaptcha.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
