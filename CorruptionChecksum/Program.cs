@@ -1,15 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CorruptionChecksum.Selectors;
+using System;
+using System.IO;
 
 namespace CorruptionChecksum
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            int[][] data = FileExtensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "maxMinSpreadsheet.txt"));
+
+            Spreadsheet ss = new Spreadsheet(data);
+
+            Console.WriteLine(ss.Checksum(new MaxMinDifferenceChecksumSelector()));
+
+            data = FileExtensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "evenlyDivisibleSpreadsheet.txt"));
+
+            ss = new Spreadsheet(data);
+
+            Console.WriteLine(ss.Checksum(new EvenlyDivisibleValuesChecksumSelector()));
         }
     }
 }
