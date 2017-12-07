@@ -62,10 +62,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="GetDigitsTests.cs" />
     <Compile Include="InverseCaptchaTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemoveItemsNotMatchingItemWithinStepTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{21171984-21A3-4C85-A686-7A78574A7CCC}</ProjectGuid>
+    <ProjectGuid>{442A76B0-A589-46A0-BD62-F02AC5583B34}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CorruptionChecksum.UnitTests</RootNamespace>
-    <AssemblyName>CorruptionChecksum.UnitTests</AssemblyName>
+    <RootNamespace>SpiralMemory.UnitTests</RootNamespace>
+    <AssemblyName>SpiralMemory.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -62,16 +62,16 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="SpiralMemoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpreadsheetChecksumTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CorruptionChecksum\CorruptionChecksum.csproj">
-      <Project>{3d673d75-a73c-4af2-a61a-bf24b7c5b63b}</Project>
-      <Name>CorruptionChecksum</Name>
+    <ProjectReference Include="..\SpiralMemory\SpiralMemory.csproj">
+      <Project>{b7d7f34d-df9b-424a-9b9f-52617774c6f4}</Project>
+      <Name>SpiralMemory</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

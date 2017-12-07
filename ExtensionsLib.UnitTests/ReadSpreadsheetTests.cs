@@ -2,7 +2,7 @@
 using System.IO;
 using Xunit;
 
-namespace CorruptionChecksum.UnitTests
+namespace ExtensionsLib.UnitTests
 {
     public class ReadSpreadsheetTests
     {
@@ -16,7 +16,7 @@ namespace CorruptionChecksum.UnitTests
                 new[] { 2, 4, 6, 8 }
             };
 
-            int[][] spreadsheet = FileExtensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "spreadsheet.txt"));
+            int[][] spreadsheet = Extensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "spreadsheet.txt"));
 
             Assert.Equal(expected, spreadsheet);
         }

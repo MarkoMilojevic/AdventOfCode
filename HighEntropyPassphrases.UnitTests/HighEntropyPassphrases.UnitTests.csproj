@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{21171984-21A3-4C85-A686-7A78574A7CCC}</ProjectGuid>
+    <ProjectGuid>{81A4E58C-0623-4845-A470-066E4439D99B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CorruptionChecksum.UnitTests</RootNamespace>
-    <AssemblyName>CorruptionChecksum.UnitTests</AssemblyName>
+    <RootNamespace>HighEntropyPassphrases.UnitTests</RootNamespace>
+    <AssemblyName>HighEntropyPassphrases.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -62,16 +62,16 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="PassphraseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpreadsheetChecksumTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CorruptionChecksum\CorruptionChecksum.csproj">
-      <Project>{3d673d75-a73c-4af2-a61a-bf24b7c5b63b}</Project>
-      <Name>CorruptionChecksum</Name>
+    <ProjectReference Include="..\HighEntropyPassphrases\HighEntropyPassphrases.csproj">
+      <Project>{6d477954-301f-4fc8-96aa-c81c81b93019}</Project>
+      <Name>HighEntropyPassphrases</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

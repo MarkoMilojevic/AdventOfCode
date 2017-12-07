@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3D673D75-A73C-4AF2-A61A-BF24B7C5B63B}</ProjectGuid>
+    <ProjectGuid>{B7D7F34D-DF9B-424A-9B9F-52617774C6F4}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CorruptionChecksum</RootNamespace>
-    <AssemblyName>CorruptionChecksum</AssemblyName>
+    <RootNamespace>SpiralMemory</RootNamespace>
+    <AssemblyName>SpiralMemory</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,29 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Selectors\EvenlyDivisibleValuesChecksumSelector.cs" />
-    <Compile Include="Selectors\IChecksumSelector.cs" />
-    <Compile Include="Selectors\MaxMinDifferenceChecksumSelector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spreadsheet.cs" />
+    <Compile Include="SpiralMemory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="evenlyDivisibleSpreadsheet.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="maxMinSpreadsheet.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ExtensionsLib\ExtensionsLib.csproj">
-      <Project>{3c0b3fbc-870a-4a3b-96a4-fedda6e5b162}</Project>
-      <Name>ExtensionsLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Xunit;
 
-namespace InverseCaptcha.UnitTests
+namespace ExtensionsLib.UnitTests
 {
     public class RemoveItemsNotMatchingItemWithinStepTests
     {

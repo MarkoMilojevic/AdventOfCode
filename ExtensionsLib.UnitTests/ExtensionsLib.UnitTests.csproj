@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{21171984-21A3-4C85-A686-7A78574A7CCC}</ProjectGuid>
+    <ProjectGuid>{928D6ADA-7F8E-495A-9002-D71A6FEE1257}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CorruptionChecksum.UnitTests</RootNamespace>
-    <AssemblyName>CorruptionChecksum.UnitTests</AssemblyName>
+    <RootNamespace>ExtensionsLib.UnitTests</RootNamespace>
+    <AssemblyName>ExtensionsLib.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -62,17 +62,28 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ReadPassphrasesTest.cs" />
+    <Compile Include="ReadSpreadsheetTests.cs" />
+    <Compile Include="GetDigitsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpreadsheetChecksumTests.cs" />
+    <Compile Include="RemoveItemsNotMatchingItemWithinStepTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CorruptionChecksum\CorruptionChecksum.csproj">
-      <Project>{3d673d75-a73c-4af2-a61a-bf24b7c5b63b}</Project>
-      <Name>CorruptionChecksum</Name>
+    <ProjectReference Include="..\ExtensionsLib\ExtensionsLib.csproj">
+      <Project>{3c0b3fbc-870a-4a3b-96a4-fedda6e5b162}</Project>
+      <Name>ExtensionsLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="passphrases.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="spreadsheet.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

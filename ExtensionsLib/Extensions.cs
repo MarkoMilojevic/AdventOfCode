@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
-namespace InverseCaptcha
+namespace ExtensionsLib
 {
     public static class Extensions
     {
@@ -26,6 +27,24 @@ namespace InverseCaptcha
             }
 
             return itemsMatchingNextItem;
+        }
+
+        public static int[][] ReadSpreadsheet(string path)
+        {
+            return File.ReadLines(path)
+                        .Select(
+                            line => line.Split(' ')
+                                        .Select(int.Parse)
+                                        .ToArray()
+                        )
+                        .ToArray();
+        }
+
+        public static string[][] ReadPassphrases(string path)
+        {
+            return File.ReadLines(path)
+                        .Select(line => line.Split(' '))
+                        .ToArray();
         }
     }
 }
