@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsLib", "Extensions
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsLib.UnitTests", "ExtensionsLib.UnitTests\ExtensionsLib.UnitTests.csproj", "{928D6ADA-7F8E-495A-9002-D71A6FEE1257}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeOfTwistyTrampolines", "MazeOfTwistyTrampolines\MazeOfTwistyTrampolines.csproj", "{7740F97A-BC7C-451F-941B-C399A6E2F672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeOfTwistyTrampolines.UnitTests", "MazeOfTwistyTrampolines.UnitTests\MazeOfTwistyTrampolines.UnitTests.csproj", "{34CEB0E3-F003-465C-A229-F7F70DA017FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{928D6ADA-7F8E-495A-9002-D71A6FEE1257}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{928D6ADA-7F8E-495A-9002-D71A6FEE1257}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{928D6ADA-7F8E-495A-9002-D71A6FEE1257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7740F97A-BC7C-451F-941B-C399A6E2F672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7740F97A-BC7C-451F-941B-C399A6E2F672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7740F97A-BC7C-451F-941B-C399A6E2F672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7740F97A-BC7C-451F-941B-C399A6E2F672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34CEB0E3-F003-465C-A229-F7F70DA017FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34CEB0E3-F003-465C-A229-F7F70DA017FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34CEB0E3-F003-465C-A229-F7F70DA017FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34CEB0E3-F003-465C-A229-F7F70DA017FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
