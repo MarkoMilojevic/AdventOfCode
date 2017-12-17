@@ -6,12 +6,12 @@ namespace CorruptionChecksum.Selectors
     {
         public Func<int[], int> Selector => array =>
         {
-            for (int i = 0; i < array.Length - 1; i++)
+            for (var i = 0; i < array.Length - 1; i++)
             {
-                for (int j = i + 1; j < array.Length; j++)
+                for (var j = i + 1; j < array.Length; j++)
                 {
-                    int higher = Math.Max(array[i], array[j]);
-                    int lower = Math.Min(array[i], array[j]);
+                    var higher = Math.Max(array[i], array[j]);
+                    var lower = Math.Min(array[i], array[j]);
 
                     if (higher % lower == 0)
                     {

@@ -8,14 +8,14 @@ namespace CorruptionChecksum.UnitTests
         [Fact]
         public void MaxMinDifferenceChecksum()
         {
-            int[][] data = new int[][]
+            var data = new[]
             {
                 new[] { 5, 1, 9, 5 },
                 new[] { 7, 5, 3 },
                 new[] { 2, 4, 6, 8 }
             };
 
-            Spreadsheet ss = new Spreadsheet(data);
+            var ss = new Spreadsheet(data);
 
             Assert.Equal(18, ss.Checksum(new MaxMinDifferenceChecksumSelector()));
         }
@@ -23,14 +23,14 @@ namespace CorruptionChecksum.UnitTests
         [Fact]
         public void EvenlyDivisibleValuesChecksum()
         {
-            int[][] data = new int[][]
+            var data = new[]
             {
                 new[] { 5, 9, 2, 8 },
                 new[] { 9, 4, 7, 3 },
                 new[] { 3, 8, 6, 5 }
             };
 
-            Spreadsheet ss = new Spreadsheet(data);
+            var ss = new Spreadsheet(data);
 
             Assert.Equal(9, ss.Checksum(new EvenlyDivisibleValuesChecksumSelector()));
         }

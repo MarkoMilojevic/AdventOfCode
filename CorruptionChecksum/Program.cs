@@ -9,9 +9,9 @@ namespace CorruptionChecksum
     {
         public static void Main(string[] args)
         {
-            int[][] data = Extensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "maxMinSpreadsheet.txt"));
+            var data = Extensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "maxMinSpreadsheet.txt"));
 
-            Spreadsheet ss = new Spreadsheet(data);
+            var ss = new Spreadsheet(data);
 
             Console.WriteLine(ss.Checksum(new MaxMinDifferenceChecksumSelector()));
 
