@@ -62,6 +62,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ReadOffsetsTests.cs" />
     <Compile Include="ReadPassphrasesTest.cs" />
     <Compile Include="ReadSpreadsheetTests.cs" />
     <Compile Include="GetDigitsTests.cs" />
@@ -78,6 +79,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="offsets.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="passphrases.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

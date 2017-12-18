@@ -48,5 +48,13 @@ namespace ExtensionsLib
                     .Select(line => line.Split(' '))
                     .ToArray();
         }
+
+        public static int[] ReadOffsets(string path)
+        {
+            return File
+                    .ReadLines(path)
+                    .Select(int.Parse)
+                    .ToArray();
+        }
     }
 }
