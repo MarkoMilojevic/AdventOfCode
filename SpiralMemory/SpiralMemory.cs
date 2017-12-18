@@ -41,32 +41,31 @@ namespace SpiralMemory
             var index = 0;
             foreach (var position in Position.GenerateSpiral())
             {
-                var memoryLocation = new MemoryLocation(position);
-
-                if (position.X == 0 && position.Y == 0)
+                var memoryLocation = new MemoryLocation(position)
                 {
-                    memoryLocation.Value = 1;
-                }
-                else
-                {
-                    memoryLocation.Value = position
-                                            .AdjacentPositions                                            .Where(pos => memoryLocationsByPosition.ContainsKey(pos))
-                                            .Sum(pos => memoryLocationsByPosition[pos].Value);
-                }
+                    Value = CalculateMemoryLocationValue(memoryLocationsByPosition, position)
+                };
 
-                memoryLocationsByIndex[index] = memoryLocation;
+                memoryLocationsByIndex[index++] = memoryLocation;
                 memoryLocationsByPosition[position] = memoryLocation;
-
-                index++;
 
                 if (memoryLocation.Value > number)
                 {
                     break;
                 }
-
             }
 
             return new SpiralMemory(memoryLocationsByIndex);
+        }
+
+        private static int CalculateMemoryLocationValue(Dictionary<Position, MemoryLocation> memoryLocationsByPosition, Position position)
+        {
+            return position.X == 0 && position.Y == 0
+                    ? 1
+                    : position
+                        .AdjacentPositions
+                        .Where(memoryLocationsByPosition.ContainsKey)
+                        .Sum(pos => memoryLocationsByPosition[pos].Value);
         }
     }
 }
