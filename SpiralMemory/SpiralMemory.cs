@@ -50,8 +50,7 @@ namespace SpiralMemory
                 else
                 {
                     memoryLocation.Value = position
-                                            .GetAdjacentPositions()
-                                            .Where(pos => memoryLocationsByPosition.ContainsKey(pos))
+                                            .AdjacentPositions                                            .Where(pos => memoryLocationsByPosition.ContainsKey(pos))
                                             .Sum(pos => memoryLocationsByPosition[pos].Value);
                 }
 

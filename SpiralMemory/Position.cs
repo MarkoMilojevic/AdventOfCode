@@ -14,9 +14,8 @@ namespace SpiralMemory
             Y = y;
         }
 
-        public List<Position> GetAdjacentPositions()
-        {
-            return new List<Position>
+        public List<Position> AdjacentPositions =>
+            new List<Position>
             {
                 new Position(X + 1, Y),
                 new Position(X + 1, Y + 1),
@@ -27,13 +26,8 @@ namespace SpiralMemory
                 new Position(X, Y - 1),
                 new Position(X + 1, Y - 1)
             };
-        }
 
-        public bool Equals(Position other)
-        {
-            return X == other.X
-                && Y == other.Y;
-        }
+        public bool Equals(Position other) => X == other.X && Y == other.Y;
 
         public override bool Equals(object obj)
         {
@@ -82,9 +76,7 @@ namespace SpiralMemory
             }
         }
 
-        public static IEnumerable<Position> GenerateSpiral(int spiralSize)
-        {
-            return GenerateSpiral().Take(spiralSize);
-        }
+        public static IEnumerable<Position> GenerateSpiral(int spiralSize) =>
+            GenerateSpiral().Take(spiralSize);
     }
 }
