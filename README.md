@@ -1,9 +1,9 @@
 # Advent of Code
-- [Day 1: Inverse Captcha](#day-1:-inverse-captcha)
-- [Day 2: Corruption Checksum](#day-2:-corruption-checksum)
-- [Day 3: Spiral Memory]
-- [Day 4: High-Entropy Passphrases]
-- [Day 5: A Maze of Twisty Trampolines, All Alike]
+- [Day 1: Inverse Captcha](#day-1-inverse-captcha)
+- [Day 2: Corruption Checksum](#day-2-corruption-checksum)
+- [Day 3: Spiral Memory](#day-3-spiral-memory)
+- [Day 4: High-Entropy Passphrases](#day-4-high-entropy-passphrases)
+- [Day 5: A Maze of Twisty Trampolines, All Alike](#day-5-a-maze-of-twisty-trampolines-all-alike)
 
 ### Day 1: Inverse Captcha
 You're standing in a room with "digitization quarantine" written in LEDs along one wall. The only door is locked, but it includes a small interface. "Restricted Area - Strictly No Digitized Users Allowed."
@@ -36,10 +36,10 @@ As you walk through the door, a glowing humanoid shape yells in your direction. 
 The spreadsheet consists of rows of apparently-random numbers. To make sure the recovery process is on the right track, they need you to calculate the spreadsheet's checksum. For each row, determine the difference between the largest value and the smallest value; the checksum is the sum of all of these differences.
 
 For example, given the following spreadsheet:
-| | | | |
+|   |   |  |   |
 | - | - | - | - |
 | 5 | 1 | 9 | 5 |
-| 7 | 5 | 3 |   |
+| 7 | 5 | 3 |    |
 | 2 | 4 | 6 | 8 |
 
 - The first row's largest and smallest values are 9 and 1, and their difference is 8.
