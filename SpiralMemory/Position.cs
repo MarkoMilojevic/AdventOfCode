@@ -32,27 +32,18 @@ namespace SpiralMemory
         public bool Equals(Position other)
         {
             return X == other.X
-                   && Y == other.Y;
+                && Y == other.Y;
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
-            {
                 return false;
-            }
 
             if (ReferenceEquals(this, obj))
-            {
                 return true;
-            }
 
-            if (obj.GetType() != typeof(Position))
-            {
-                return false;
-            }
-
-            return Equals((Position) obj);
+            return obj is Position position && Equals(position);
         }
 
         public override int GetHashCode()
