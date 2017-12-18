@@ -36,8 +36,7 @@ As you walk through the door, a glowing humanoid shape yells in your direction. 
 The spreadsheet consists of rows of apparently-random numbers. To make sure the recovery process is on the right track, they need you to calculate the spreadsheet's checksum. For each row, determine the difference between the largest value and the smallest value; the checksum is the sum of all of these differences.
 
 For example, given the following spreadsheet:
-|   |   |  |   |
-| - | - | - | - |
+|:---:|:---:|:---:|:---:|
 | 5 | 1 | 9 | 5 |
 | 7 | 5 | 3 |    |
 | 2 | 4 | 6 | 8 |
