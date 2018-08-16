@@ -1,5 +1,4 @@
-﻿using CorruptionChecksum.Selectors;
-using ExtensionsLib;
+﻿using ExtensionsLib;
 using System;
 using System.IO;
 
@@ -9,17 +8,16 @@ namespace CorruptionChecksum
     {
         public static void Main(string[] args)
         {
-            int[][] data = Extensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "maxMinSpreadsheet.txt"));
+            int[][] data;
+            Spreadsheet ss;
 
-            Spreadsheet ss = new Spreadsheet(data);
-
-            Console.WriteLine(ss.Checksum(new MaxMinDifferenceChecksumSelector()));
-
-            data = Extensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "evenlyDivisibleSpreadsheet.txt"));
-
+            data = Extensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "max_min.txt"));
             ss = new Spreadsheet(data);
+            Console.WriteLine(ss.Checksum(ChecksumSelectors.MaxMinDifference));
 
-            Console.WriteLine(ss.Checksum(new EvenlyDivisibleValuesChecksumSelector()));
+            data = Extensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "evenly_divisible.txt"));
+            ss = new Spreadsheet(data);
+            Console.WriteLine(ss.Checksum(ChecksumSelectors.EvenlyDivisibleValues));
         }
     }
 }
