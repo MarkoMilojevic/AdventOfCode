@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using ExtensionsLib;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MazeOfTwistyTrampolines
 {
@@ -10,6 +8,19 @@ namespace MazeOfTwistyTrampolines
     {
         public static void Main(string[] args)
         {
+            var offsets = Extensions.ReadOffsets("offsets.txt").ToList();
+            var executedInstructionsCounter = 0;
+
+            new JumpInstructions(offsets, () => executedInstructionsCounter++).Execute(offset => offset + 1);
+
+            Console.WriteLine(executedInstructionsCounter);
+
+            offsets = Extensions.ReadOffsets("offsets.txt").ToList();
+            executedInstructionsCounter = 0;
+
+            new JumpInstructions(offsets, () => executedInstructionsCounter++).Execute(offset => offset >= 3 ? offset - 1 : offset + 1);
+
+            Console.WriteLine(executedInstructionsCounter);
         }
     }
 }

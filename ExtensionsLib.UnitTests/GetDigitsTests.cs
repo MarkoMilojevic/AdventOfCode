@@ -9,7 +9,7 @@ namespace ExtensionsLib.UnitTests
         [MemberData(nameof(GetDigitsFromStringParams))]
         public void GetDigitsFromString(string number, List<int> expectedDigits)
         {
-            List<int> digits = number.GetDigits();
+            var digits = number.GetDigits();
 
             Assert.Equal(expectedDigits, digits);
         }

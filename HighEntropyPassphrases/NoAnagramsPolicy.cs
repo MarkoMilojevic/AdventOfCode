@@ -6,9 +6,9 @@ namespace HighEntropyPassphrases
     {
         public bool IsSatisfied(string[] words)
         {
-            string[] wordsWithLettersSortedAlphabetically = words
-                                                            .Select(word => string.Concat(word.OrderBy(c => c)))
-                                                            .ToArray();
+            var wordsWithLettersSortedAlphabetically = words
+                                                        .Select(word => string.Concat(word.OrderBy(c => c)))
+                                                        .ToArray();
 
             return new NoDuplicatesPolicy().IsSatisfied(wordsWithLettersSortedAlphabetically);
         }

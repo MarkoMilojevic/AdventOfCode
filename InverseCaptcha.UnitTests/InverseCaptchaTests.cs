@@ -11,7 +11,7 @@ namespace InverseCaptcha.UnitTests
         [InlineData(91212129, 9)]
         public void Solve(int input, int expected)
         {
-            InverseCaptchaSolver solver = new InverseCaptchaSolver(input.ToString(), 1);
+            var solver = new InverseCaptchaSolver(input.ToString(), 1);
 
             Assert.Equal(expected, solver.Solve());
         }
@@ -24,7 +24,7 @@ namespace InverseCaptcha.UnitTests
         [InlineData(12131415, 4)]
         public void SolveHalfwayAround(int input, int expected)
         {
-            InverseCaptchaSolver solver = new InverseCaptchaSolver(input.ToString(), input.ToString().Length / 2);
+            var solver = new InverseCaptchaSolver(input.ToString(), input.ToString().Length / 2);
 
             Assert.Equal(expected, solver.Solve());
         }

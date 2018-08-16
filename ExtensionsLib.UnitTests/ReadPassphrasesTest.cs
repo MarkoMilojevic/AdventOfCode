@@ -9,14 +9,14 @@ namespace ExtensionsLib.UnitTests
         [Fact]
         public void ReadPassphrases()
         {
-            string[][] expected = new string[][]
+            var expected = new[]
             {
                 new[] { "aa", "bb", "cc", "dd", "ee" },
                 new[] { "aa", "bb", "cc", "dd", "aa" },
                 new[] { "aa", "bb", "cc", "dd", "aaa" }
             };
 
-            string[][] passphrases = Extensions.ReadPassphrases(Path.Combine(Environment.CurrentDirectory, "passphrases.txt"));
+            var passphrases = Extensions.ReadPassphrases(Path.Combine(Environment.CurrentDirectory, "passphrases.txt"));
 
             Assert.Equal(expected, passphrases);
         }

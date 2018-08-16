@@ -13,12 +13,12 @@ namespace ExtensionsLib
 
         public static List<int> RemoveItemsNotMatchingItemWithinStep(this List<int> sequence, int step)
         {
-            List<int> itemsMatchingNextItem = new List<int>();
+            var itemsMatchingNextItem = new List<int>();
 
-            for (int i = 0; i < sequence.Count; i++)
+            for (var i = 0; i < sequence.Count; i++)
             {
-                int current = sequence[i];
-                int next = sequence[(i + step) % sequence.Count];
+                var current = sequence[i];
+                var next = sequence[(i + step) % sequence.Count];
 
                 if (current == next)
                 {
@@ -31,20 +31,30 @@ namespace ExtensionsLib
 
         public static int[][] ReadSpreadsheet(string path)
         {
-            return File.ReadLines(path)
-                        .Select(
-                            line => line.Split(' ')
-                                        .Select(int.Parse)
-                                        .ToArray()
-                        )
-                        .ToArray();
+            return File
+                    .ReadLines(path)
+                    .Select(
+                        line => line.Split(' ')
+                                    .Select(int.Parse)
+                                    .ToArray()
+                    )
+                    .ToArray();
         }
 
         public static string[][] ReadPassphrases(string path)
         {
-            return File.ReadLines(path)
-                        .Select(line => line.Split(' '))
-                        .ToArray();
+            return File
+                    .ReadLines(path)
+                    .Select(line => line.Split(' '))
+                    .ToArray();
+        }
+
+        public static int[] ReadOffsets(string path)
+        {
+            return File
+                    .ReadLines(path)
+                    .Select(int.Parse)
+                    .ToArray();
         }
     }
 }

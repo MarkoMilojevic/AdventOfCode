@@ -5,8 +5,8 @@ namespace HighEntropyPassphrases.UnitTests
     public class PassphraseTests
     {
         [Theory]
-        [InlineData(new object[] { new string[] { "aa", "bb", "cc", "dd", "ee" } })]
-        [InlineData(new object[] { new string[] { "aa", "bb", "cc", "dd", "aaa" } })]
+        [InlineData(new object[] { new[] { "aa", "bb", "cc", "dd", "ee" } })]
+        [InlineData(new object[] { new[] { "aa", "bb", "cc", "dd", "aaa" } })]
         public void Should_BeValid_When_PassphraseHasNoDuplicateWords(string[] words)
         {
             Assert.True(new NoDuplicatesPolicy().IsSatisfied(words));
@@ -19,17 +19,17 @@ namespace HighEntropyPassphrases.UnitTests
         }
 
         [Theory]
-        [InlineData(new object[] { new string[] { "abcde", "fghij" } })]
-        [InlineData(new object[] { new string[] { "a", "ab", "abc", "abd", "abf", "abj" } })]
-        [InlineData(new object[] { new string[] { "iiii", "oiii", "ooii", "oooi", "oooo" } })]
+        [InlineData(new object[] { new[] { "abcde", "fghij" } })]
+        [InlineData(new object[] { new[] { "a", "ab", "abc", "abd", "abf", "abj" } })]
+        [InlineData(new object[] { new[] { "iiii", "oiii", "ooii", "oooi", "oooo" } })]
         public void Should_BeValid_When_PassphraseHasNoTwoWordsThatAreAnagrams(string[] words)
         {
             Assert.True(new NoAnagramsPolicy().IsSatisfied(words));
         }
 
         [Theory]
-        [InlineData(new object[] { new string[] { "abcde", "xyz", "ecdab" } })]
-        [InlineData(new object[] { new string[] { "oiii", "ioii", "iioi", "iiio" } })]
+        [InlineData(new object[] { new[] { "abcde", "xyz", "ecdab" } })]
+        [InlineData(new object[] { new[] { "oiii", "ioii", "iioi", "iiio" } })]
         public void Should_NotBeValid_When_PassphraseHasTwoWordsThatAreAnagrams(string[] words)
         {
             Assert.False(new NoAnagramsPolicy().IsSatisfied(words));

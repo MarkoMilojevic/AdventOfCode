@@ -1,31 +1,71 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SpiralMemory
 {
     public class SpiralMemory
     {
-        public int NumberOfStepsFromCenterTo(int number)
+        private readonly Dictionary<int, MemoryLocation> _memoryLocationsByIndex;
+
+        private SpiralMemory(Dictionary<int, MemoryLocation> memoryLocationsByIndex)
         {
-            if (number == 1)
+            _memoryLocationsByIndex = memoryLocationsByIndex;
+        }
+
+        public MemoryLocation this[int index] => _memoryLocationsByIndex[index];
+
+        public int Count => _memoryLocationsByIndex.Count;
+
+        public static SpiralMemory Generate(int numberOfMemoryLocations)
+        {
+            var memoryLocationsByIndex = new Dictionary<int, MemoryLocation>();
+            var index = 0;
+
+            foreach (var position in Position.GenerateSpiral(numberOfMemoryLocations))
             {
-                return 0;
+                var memoryLocation = new MemoryLocation(position);
+
+                memoryLocationsByIndex[index] = memoryLocation;
+
+                index++;
             }
 
-            int root = (int)Math.Ceiling(Math.Sqrt(number));
-            if (root % 2 == 0)
+            return new SpiralMemory(memoryLocationsByIndex);
+        }
+
+        public static SpiralMemory GenerateUntilHigherThan(int number)
+        {
+            var memoryLocationsByIndex = new Dictionary<int, MemoryLocation>();
+            var memoryLocationsByPosition = new Dictionary<Position, MemoryLocation>();
+
+            var index = 0;
+            foreach (var position in Position.GenerateSpiral())
             {
-                root += 1;
+                var memoryLocation = new MemoryLocation(position)
+                {
+                    Value = CalculateMemoryLocationValue(memoryLocationsByPosition, position)
+                };
+
+                memoryLocationsByIndex[index++] = memoryLocation;
+                memoryLocationsByPosition[position] = memoryLocation;
+
+                if (memoryLocation.Value > number)
+                {
+                    break;
+                }
             }
 
-            int stepsToCircle = (root - 1) / 2;
-            int minValueInCircle = (root - 2) * (root - 2) + 1;
+            return new SpiralMemory(memoryLocationsByIndex);
+        }
 
-            int outerRightValueClosestToCenter = minValueInCircle + (root - 3) / 2;
-            int k = (number - minValueInCircle) / (root - 1);
-            int valueToCountOffsetFrom = outerRightValueClosestToCenter + k * (root - 1);
-
-            int offset = Math.Abs(number - valueToCountOffsetFrom);
-            return stepsToCircle + offset;
+        private static int CalculateMemoryLocationValue(Dictionary<Position, MemoryLocation> memoryLocationsByPosition, Position position)
+        {
+            return position.X == 0 && position.Y == 0
+                    ? 1
+                    : position
+                        .AdjacentPositions
+                        .Where(memoryLocationsByPosition.ContainsKey)
+                        .Sum(pos => memoryLocationsByPosition[pos].Value);
         }
     }
 }
