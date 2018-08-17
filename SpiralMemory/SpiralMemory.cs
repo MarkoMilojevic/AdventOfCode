@@ -5,67 +5,56 @@ namespace SpiralMemory
 {
     public class SpiralMemory
     {
-        private readonly Dictionary<int, MemoryLocation> _memoryLocationsByIndex;
+        private IDictionary<int, MemoryLocation> MemoryLocationsByIndex { get; }
 
-        private SpiralMemory(Dictionary<int, MemoryLocation> memoryLocationsByIndex)
-        {
-            _memoryLocationsByIndex = memoryLocationsByIndex;
-        }
+        public int Count => MemoryLocationsByIndex.Count;
+        public MemoryLocation this[int index] => MemoryLocationsByIndex[index];
 
-        public MemoryLocation this[int index] => _memoryLocationsByIndex[index];
+        private SpiralMemory(IDictionary<int, MemoryLocation> memoryLocationsByIndex) =>
+            MemoryLocationsByIndex = memoryLocationsByIndex;
 
-        public int Count => _memoryLocationsByIndex.Count;
+        public static SpiralMemory Generate(int numberOfMemoryLocations) =>
+            new SpiralMemory(
+                Position
+                    .Spiral(numberOfMemoryLocations)
+                    .Select((position, index) => new KeyValuePair<int, MemoryLocation>(index, new MemoryLocation(position)))
+                    .ToDictionary(kvp => kvp.Key, kvp => kvp.Value)
+            );
 
-        public static SpiralMemory Generate(int numberOfMemoryLocations)
-        {
-            var memoryLocationsByIndex = new Dictionary<int, MemoryLocation>();
-            var index = 0;
-
-            foreach (var position in Position.GenerateSpiral(numberOfMemoryLocations))
-            {
-                var memoryLocation = new MemoryLocation(position);
-
-                memoryLocationsByIndex[index] = memoryLocation;
-
-                index++;
-            }
-
-            return new SpiralMemory(memoryLocationsByIndex);
-        }
-
-        public static SpiralMemory GenerateUntilHigherThan(int number)
+        public static SpiralMemory GenerateUntilLastValueIsHigherThan(int number)
         {
             var memoryLocationsByIndex = new Dictionary<int, MemoryLocation>();
             var memoryLocationsByPosition = new Dictionary<Position, MemoryLocation>();
 
-            var index = 0;
-            foreach (var position in Position.GenerateSpiral())
+            int index = 0;
+            int lastMemoryValuePopulated = 0;
+
+            using (IEnumerator<Position> enumerator = Position.InfiniteSpiral().GetEnumerator())
             {
-                var memoryLocation = new MemoryLocation(position)
+                while (lastMemoryValuePopulated <= number)
                 {
-                    Value = CalculateMemoryLocationValue(memoryLocationsByPosition, position)
-                };
+                    enumerator.MoveNext();
+                    Position position = enumerator.Current;
 
-                memoryLocationsByIndex[index++] = memoryLocation;
-                memoryLocationsByPosition[position] = memoryLocation;
+                    int value = CalculateMemoryLocationValue(memoryLocationsByPosition, position);
+                    MemoryLocation memoryLocation = new MemoryLocation(position).WithValue(value);
 
-                if (memoryLocation.Value > number)
-                {
-                    break;
+                    memoryLocationsByIndex[index++] = memoryLocation;
+                    memoryLocationsByPosition[position] = memoryLocation;
+
+                    lastMemoryValuePopulated = memoryLocation.Value;
                 }
             }
 
             return new SpiralMemory(memoryLocationsByIndex);
         }
 
-        private static int CalculateMemoryLocationValue(Dictionary<Position, MemoryLocation> memoryLocationsByPosition, Position position)
-        {
-            return position.X == 0 && position.Y == 0
-                    ? 1
-                    : position
-                        .AdjacentPositions
-                        .Where(memoryLocationsByPosition.ContainsKey)
-                        .Sum(pos => memoryLocationsByPosition[pos].Value);
-        }
+        private static int CalculateMemoryLocationValue(Dictionary<Position, MemoryLocation> memoryLocationsByPosition, Position position) =>
+            position.X == 0 && position.Y == 0
+                ? 1
+                : position
+                  .AdjacentPositions
+                  .Where(memoryLocationsByPosition.ContainsKey)
+                  .Sum(pos => memoryLocationsByPosition[pos].Value);
     }
 }

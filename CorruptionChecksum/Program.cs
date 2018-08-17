@@ -8,16 +8,11 @@ namespace CorruptionChecksum
     {
         public static void Main(string[] args)
         {
-            int[][] data;
-            Spreadsheet ss;
+            int[][] maxMinData = Extensions.ReadIntMatrixFromFile(Path.Combine(Environment.CurrentDirectory, "max_min.txt"));
+            Console.WriteLine(maxMinData.Checksum(ChecksumSelectors.MaxMinDifference));
 
-            data = Extensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "max_min.txt"));
-            ss = new Spreadsheet(data);
-            Console.WriteLine(ss.Checksum(ChecksumSelectors.MaxMinDifference));
-
-            data = Extensions.ReadSpreadsheet(Path.Combine(Environment.CurrentDirectory, "evenly_divisible.txt"));
-            ss = new Spreadsheet(data);
-            Console.WriteLine(ss.Checksum(ChecksumSelectors.EvenlyDivisibleValues));
+            int[][] evenlyDivisibleData = Extensions.ReadIntMatrixFromFile(Path.Combine(Environment.CurrentDirectory, "evenly_divisible.txt"));
+            Console.WriteLine(evenlyDivisibleData.Checksum(ChecksumSelectors.EvenlyDivisibleValues));
         }
     }
 }

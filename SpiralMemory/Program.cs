@@ -6,15 +6,14 @@ namespace SpiralMemory
     {
         public static void Main(string[] args)
         {
-            var number = 325489;
-            var memory = SpiralMemory.Generate(number);
+            const int numberOfMemoryLocations = 325489;
 
-            var position = memory[number - 1].Position;
-
+            SpiralMemory memory1 = SpiralMemory.Generate(numberOfMemoryLocations);
+            Position position = memory1[numberOfMemoryLocations - 1].Position;
             Console.WriteLine(Math.Abs(position.X) + Math.Abs(position.Y));
-            
-            memory = SpiralMemory.GenerateUntilHigherThan(number);
-            Console.WriteLine(memory[memory.Count - 1].Value);
+
+            SpiralMemory memory2 = SpiralMemory.GenerateUntilLastValueIsHigherThan(numberOfMemoryLocations);
+            Console.WriteLine(memory2[memory2.Count - 1].Value);
         }
     }
 }

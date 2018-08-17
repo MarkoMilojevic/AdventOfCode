@@ -4,19 +4,20 @@ using System.Linq;
 
 namespace SpiralMemory
 {
-    public sealed class Position
+    public sealed class Position : IEquatable<Position>
     {
+        private Lazy<IEnumerable<Position>> LazyAdjacentPositions { get; }
+
         public int X { get; }
         public int Y { get; }
-
-        private readonly Lazy<List<Position>> _adjacentPositions;
+        public IEnumerable<Position> AdjacentPositions => LazyAdjacentPositions.Value;
 
         public Position(int x, int y)
         {
             X = x;
             Y = y;
 
-            _adjacentPositions = new Lazy<List<Position>>(() => new List<Position> {
+            LazyAdjacentPositions = new Lazy<IEnumerable<Position>>(() => new List<Position> {
                 new Position(X + 1, Y),
                 new Position(X + 1, Y + 1),
                 new Position(X, Y + 1),
@@ -28,14 +29,15 @@ namespace SpiralMemory
             });
         }
 
-        public List<Position> AdjacentPositions => _adjacentPositions.Value;
+        public static IEnumerable<Position> Spiral(int spiralSize) =>
+            InfiniteSpiral().Take(spiralSize);
 
-        public static IEnumerable<Position> GenerateSpiral()
+        public static IEnumerable<Position> InfiniteSpiral()
         {
-            var x = 0;
-            var y = 0;
-            var direction = 1;
-            var sequenceLength = 1;
+            int x = 0;
+            int y = 0;
+            int direction = 1;
+            int sequenceLength = 1;
 
             while (true)
             {
@@ -52,28 +54,34 @@ namespace SpiralMemory
                 }
 
                 direction *= -1;
-                sequenceLength++;
+                sequenceLength += 1;
             }
         }
 
-        public static IEnumerable<Position> GenerateSpiral(int spiralSize) => GenerateSpiral().Take(spiralSize);
+        public static bool operator ==(Position left, Position right) =>
+            !(left is null ^ right is null) && (left is null || left.Equals(right));
 
-        public bool Equals(Position other) => X == other.X && Y == other.Y;
+        public static bool operator !=(Position left, Position right) =>
+            !(left == right);
 
-        public override bool Equals(object obj)
+        public bool Equals(Position other)
         {
-            if (ReferenceEquals(null, obj))
+            if (other is null)
                 return false;
 
-            if (ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, other))
                 return true;
 
-            return obj is Position position && Equals(position);
+            return X == other.X
+                && Y == other.Y;
         }
+
+        public override bool Equals(object obj) =>
+            Equals(obj as Position);
 
         public override int GetHashCode()
         {
-            var hashCode = 1861411795;
+            int hashCode = 1861411795;
 
             hashCode = hashCode * -1521134295 + X.GetHashCode();
             hashCode = hashCode * -1521134295 + Y.GetHashCode();

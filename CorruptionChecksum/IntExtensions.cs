@@ -3,11 +3,9 @@ using System.Linq;
 
 namespace CorruptionChecksum
 {
-    public class Spreadsheet
+    public static class IntExtensions
     {
-        private int[][] Data { get; }
-
-        public Spreadsheet(int[][] data)
+        public static int Checksum(this int[][] data, Func<int[], int> selector)
         {
             if (data == null)
                 throw new ArgumentNullException(nameof(data));
@@ -15,12 +13,9 @@ namespace CorruptionChecksum
             if (data.Any(row => row == null))
                 throw new ArgumentNullException($"{nameof(data)}[i]");
 
-            Data = data;
+            return data
+                   .Select(selector)
+                   .Sum();
         }
-
-        public int Checksum(Func<int[], int> selector) =>
-            Data
-                .Select(selector)
-                .Sum();
     }
 }

@@ -62,7 +62,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="InverseCaptchaTests.cs" />
+    <Compile Include="IntExtensionsTests.cs" />
+    <Compile Include="StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

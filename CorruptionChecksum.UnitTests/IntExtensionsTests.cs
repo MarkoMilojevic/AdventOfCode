@@ -2,10 +2,10 @@
 
 namespace CorruptionChecksum.UnitTests
 {
-    public class SpreadsheetChecksumTests
+    public class IntExtensionsTests
     {
         [Fact]
-        public void MaxMinDifferenceChecksum()
+        public void MaxMinDifferenceChecksumTest()
         {
             var data = new[]
             {
@@ -13,14 +13,12 @@ namespace CorruptionChecksum.UnitTests
                 new[] { 7, 5, 3 },
                 new[] { 2, 4, 6, 8 }
             };
-
-            var ss = new Spreadsheet(data);
-
-            Assert.Equal(18, ss.Checksum(ChecksumSelectors.MaxMinDifference));
+            
+            Assert.Equal(18, data.Checksum(ChecksumSelectors.MaxMinDifference));
         }
 
         [Fact]
-        public void EvenlyDivisibleValuesChecksum()
+        public void EvenlyDivisibleValuesChecksumTest()
         {
             var data = new[]
             {
@@ -29,9 +27,7 @@ namespace CorruptionChecksum.UnitTests
                 new[] { 3, 8, 6, 5 }
             };
 
-            var ss = new Spreadsheet(data);
-
-            Assert.Equal(9, ss.Checksum(ChecksumSelectors.EvenlyDivisibleValues));
+            Assert.Equal(9, data.Checksum(ChecksumSelectors.EvenlyDivisibleValues));
         }
     }
 }

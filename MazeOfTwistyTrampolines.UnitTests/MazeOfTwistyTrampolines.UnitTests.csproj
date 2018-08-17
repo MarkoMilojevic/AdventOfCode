@@ -62,7 +62,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="JumpInstructionsTests.cs" />
+    <Compile Include="IntExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

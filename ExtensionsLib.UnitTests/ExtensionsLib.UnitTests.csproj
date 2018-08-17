@@ -62,12 +62,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="ReadOffsetsTests.cs" />
-    <Compile Include="ReadPassphrasesTest.cs" />
-    <Compile Include="ReadSpreadsheetTests.cs" />
-    <Compile Include="GetDigitsTests.cs" />
+    <Compile Include="ReadIntegersFromFileTests.cs" />
+    <Compile Include="ReadStringMatrixFromFileTests.cs" />
+    <Compile Include="ReadIntMatrixFromFileTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemoveItemsNotMatchingItemWithinStepTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -79,13 +77,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="offsets.txt">
+    <Content Include="integers.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="passphrases.txt">
+    <Content Include="string_matrix.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="spreadsheet.txt">
+    <Content Include="int_matrix.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

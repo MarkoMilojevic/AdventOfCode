@@ -9,10 +9,10 @@ namespace HighEntropyPassphrases
     {
         public static void Main(string[] args)
         {
-            var passphrases = Extensions.ReadPassphrases(Path.Combine(Environment.CurrentDirectory, "passphrases.txt"));
+            string[][] passphrases = Extensions.ReadStringMatrixFromFile(Path.Combine(Environment.CurrentDirectory, "passphrases.txt"));
             
-            Console.WriteLine(passphrases.Count(new NoDuplicatesPolicy().IsSatisfied));
-            Console.WriteLine(passphrases.Count(new NoAnagramsPolicy().IsSatisfied));
+            Console.WriteLine(passphrases.Count(passphrase => passphrase.HasDuplicates()));
+            Console.WriteLine(passphrases.Count(passphrase => passphrase.HasAnagrams()));
         }
     }
 }
